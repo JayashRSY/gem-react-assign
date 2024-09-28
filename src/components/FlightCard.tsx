@@ -7,27 +7,11 @@ import {
   FaChevronUp,
   FaChevronDown,
 } from "react-icons/fa";
+import { IFlight } from "../types/flight";
 
-interface Flight {
-  id: number;
-  name: string;
-  departureTime: string; // 24-hour format
-  arrivalTime: string; // 24-hour format
-  flightHours: number;
-  price: number;
-  emiPrice: number; // New property for EMI price
-  startCode: string; // New property for start code
-  endCode: string; // New property for end code
-  start: string;
-  end: string;
-  totalTime: string;
-  refundPolicy: string;
-  noCostEMI: boolean;
-  logo: string;
-}
 
 interface FlightCardProps {
-  flight: Flight;
+  flight: IFlight;
 }
 
 const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
@@ -61,7 +45,7 @@ const FlightCard: React.FC<FlightCardProps> = ({ flight }) => {
               <div className="text-xl">{flight.startCode}</div>, {flight.start}
             </div>
             <div className="flex items-center  text-xl font-bold">
-              <FaClock className="text-orange-500 mr-2" /> Departure:{" "}
+              <FaClock className="text-orange-500 mr-2" />
               {flight.departureTime}
             </div>
           </div>
