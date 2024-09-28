@@ -1,13 +1,16 @@
-const flights = [
+export const flightsData = [
     {
         "id": 1,
         "name": "American Airlines",
-        "departureTime": "08:00 AM",
-        "arrivalTime": "10:00 AM",
+        "departureTime": "08:00",
+        "arrivalTime": "10:00",
         "flightHours": 2,
         "price": 150,
+        "emiPrice": 12.5, // 150 / 12
         "start": "New York",
+        "startCode": "NYC",
         "end": "Los Angeles",
+        "endCode": "LAX",
         "totalTime": "2h 30m",
         "refundPolicy": "Full Refundable",
         "noCostEMI": true,
@@ -16,12 +19,15 @@ const flights = [
     {
         "id": 2,
         "name": "Lufthansa",
-        "departureTime": "10:30 AM",
-        "arrivalTime": "01:30 PM",
+        "departureTime": "10:30",
+        "arrivalTime": "13:30",
         "flightHours": 3,
         "price": 200,
+        "emiPrice": 16.67, // 200 / 12
         "start": "Chicago",
+        "startCode": "CHI",
         "end": "Miami",
+        "endCode": "MIA",
         "totalTime": "3h 15m",
         "refundPolicy": "Partially Refundable",
         "noCostEMI": false,
@@ -30,12 +36,15 @@ const flights = [
     {
         "id": 3,
         "name": "KLM Royal Dutch Airlines",
-        "departureTime": "01:00 PM",
-        "arrivalTime": "02:45 PM",
+        "departureTime": "13:00",
+        "arrivalTime": "14:45",
         "flightHours": 1.5,
         "price": 100,
+        "emiPrice": 8.33, // 100 / 12
         "start": "Dallas",
+        "startCode": "DFW",
         "end": "Houston",
+        "endCode": "HOU",
         "totalTime": "1h 45m",
         "refundPolicy": "Full Refundable",
         "noCostEMI": true,
@@ -44,12 +53,15 @@ const flights = [
     {
         "id": 4,
         "name": "EgyptAir",
-        "departureTime": "03:15 PM",
-        "arrivalTime": "07:35 PM",
+        "departureTime": "15:15",
+        "arrivalTime": "19:35",
         "flightHours": 4,
         "price": 250,
+        "emiPrice": 20.83, // 250 / 12
         "start": "San Francisco",
+        "startCode": "SFO",
         "end": "Seattle",
+        "endCode": "SEA",
         "totalTime": "4h 20m",
         "refundPolicy": "Partially Refundable",
         "noCostEMI": false,
@@ -58,12 +70,15 @@ const flights = [
     {
         "id": 5,
         "name": "Emirates",
-        "departureTime": "06:45 PM",
-        "arrivalTime": "09:25 PM",
+        "departureTime": "18:45",
+        "arrivalTime": "21:25",
         "flightHours": 2.5,
         "price": 175,
+        "emiPrice": 14.58, // 175 / 12
         "start": "Boston",
+        "startCode": "BOS",
         "end": "Washington D.C.",
+        "endCode": "DCA",
         "totalTime": "2h 40m",
         "refundPolicy": "Full Refundable",
         "noCostEMI": true,
@@ -72,12 +87,15 @@ const flights = [
     {
         "id": 6,
         "name": "Air France",
-        "departureTime": "09:00 AM",
-        "arrivalTime": "12:00 PM",
+        "departureTime": "09:00",
+        "arrivalTime": "12:00",
         "flightHours": 3,
         "price": 220,
+        "emiPrice": 18.33, // 220 / 12
         "start": "San Diego",
+        "startCode": "SAN",
         "end": "San Jose",
+        "endCode": "SJC",
         "totalTime": "3h 10m",
         "refundPolicy": "Partially Refundable",
         "noCostEMI": true,
@@ -86,12 +104,15 @@ const flights = [
     {
         "id": 7,
         "name": "Delta Air Lines",
-        "departureTime": "11:30 AM",
-        "arrivalTime": "02:00 PM",
+        "departureTime": "11:30",
+        "arrivalTime": "14:00",
         "flightHours": 2.5,
         "price": 180,
+        "emiPrice": 15, // 180 / 12
         "start": "Atlanta",
+        "startCode": "ATL",
         "end": "Charlotte",
+        "endCode": "CLT",
         "totalTime": "2h 30m",
         "refundPolicy": "Full Refundable",
         "noCostEMI": false,
@@ -100,12 +121,15 @@ const flights = [
     {
         "id": 8,
         "name": "Vistara",
-        "departureTime": "01:30 PM",
-        "arrivalTime": "06:45 PM",
+        "departureTime": "13:30",
+        "arrivalTime": "18:45",
         "flightHours": 5,
         "price": 300,
+        "emiPrice": 25, // 300 / 12
         "start": "Honolulu",
+        "startCode": "HNL",
         "end": "Los Angeles",
+        "endCode": "LAX",
         "totalTime": "5h 15m",
         "refundPolicy": "Partially Refundable",
         "noCostEMI": true,
@@ -114,12 +138,15 @@ const flights = [
     {
         "id": 9,
         "name": "Singapore Airlines",
-        "departureTime": "03:00 PM",
-        "arrivalTime": "09:45 PM",
+        "departureTime": "15:00",
+        "arrivalTime": "21:45",
         "flightHours": 6,
         "price": 350,
+        "emiPrice": 29.17, // 350 / 12
         "start": "Singapore",
+        "startCode": "SIN",
         "end": "New York",
+        "endCode": "JFK",
         "totalTime": "6h 45m",
         "refundPolicy": "Full Refundable",
         "noCostEMI": true,
@@ -128,17 +155,18 @@ const flights = [
     {
         "id": 10,
         "name": "Qatar Airways",
-        "departureTime": "05:00 PM",
-        "arrivalTime": "12:30 AM",
+        "departureTime": "17:00",
+        "arrivalTime": "00:30",
         "flightHours": 7,
         "price": 400,
+        "emiPrice": 33.33, // 400 / 12
         "start": "Doha",
+        "startCode": "DOH",
         "end": "London",
+        "endCode": "LHR",
         "totalTime": "7h 30m",
         "refundPolicy": "Partially Refundable",
         "noCostEMI": false,
-        "logo": "https://logos-world.net/wp-content/uploads/2020/03/Qatar-Airways-Emblem.png"
+        "logo": "https://creativecan.com/wp-content/uploads/2012/12/qatar-airways-logo.jpg"
     }
 ];
-
-export default flights;
